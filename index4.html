@@ -1,0 +1,980 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#170819">
+
+<title>Happy Birthday Sissy 💗</title>
+
+<style>
+:root {
+    --pink: #ff6fae;
+    --hot-pink: #ff3f91;
+    --purple: #a879ff;
+    --gold: #ffe0a0;
+    --bg: #100713;
+    --glass: rgba(255,255,255,.075);
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    background: var(--bg);
+    color: white;
+    font-family: "Segoe UI", Arial, sans-serif;
+    overflow-x: hidden;
+}
+
+body::before {
+    content: "";
+    position: fixed;
+    inset: 0;
+    pointer-events: none;
+    z-index: -1;
+    background:
+        radial-gradient(ellipse at 15% 15%, #6c174b55, transparent 42%),
+        radial-gradient(ellipse at 85% 45%, #542d9250, transparent 45%),
+        radial-gradient(ellipse at 50% 100%, #8b1c5130, transparent 45%);
+}
+
+button {
+    font: inherit;
+}
+
+/* BACKGROUND PARTICLES */
+
+#hearts {
+    position: fixed;
+    inset: 0;
+    pointer-events: none;
+    overflow: hidden;
+    z-index: 0;
+}
+
+.heart-particle {
+    position: absolute;
+    bottom: -50px;
+    opacity: 0;
+    animation: floatUp linear forwards;
+    filter: drop-shadow(0 0 9px #ff68b9);
+}
+
+@keyframes floatUp {
+    0% {
+        transform: translateY(0) rotate(0deg) scale(.7);
+        opacity: 0;
+    }
+    15% { opacity: .8; }
+    85% { opacity: .6; }
+    100% {
+        transform: translateY(-115vh) rotate(35deg) scale(1.3);
+        opacity: 0;
+    }
+}
+
+/* OPENING SCREEN */
+
+.intro {
+    position: fixed;
+    inset: 0;
+    z-index: 20;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    padding: 25px;
+    background:
+        radial-gradient(ellipse at center, #592044 0%, #210d28 48%, #100713 100%);
+    transition: opacity 1s ease, visibility 1s ease;
+}
+
+.intro.hide {
+    opacity: 0;
+    visibility: hidden;
+    pointer-events: none;
+}
+
+.intro-label {
+    font-size: 11px;
+    letter-spacing: 5px;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 25px;
+}
+
+.heart-button {
+    border: 0;
+    background: none;
+    color: #ff65ad;
+    cursor: pointer;
+    font-size: clamp(95px, 19vw, 155px);
+    line-height: 1.3;
+    filter: drop-shadow(0 0 15px #ff4da5)
+            drop-shadow(0 0 40px #f62b8b80);
+    animation: heartbeat 1.3s infinite;
+    transition: transform .3s;
+}
+
+.heart-button:hover {
+    transform: scale(1.13);
+}
+
+@keyframes heartbeat {
+    0%, 100% { transform: scale(1); }
+    50% { transform: scale(1.1); }
+}
+
+.intro h1 {
+    font-family: Georgia, serif;
+    font-size: clamp(30px, 7vw, 53px);
+    font-weight: 400;
+    color: #fff0f7;
+    margin: 15px 0;
+}
+
+.intro p {
+    color: #e6c8dc;
+    letter-spacing: 1px;
+    font-size: 14px;
+    line-height: 1.8;
+}
+
+.tap-hint {
+    margin-top: 28px;
+    border: 1px solid #ff91c655;
+    border-radius: 50px;
+    padding: 12px 23px;
+    color: #ffc7e2;
+    font-size: 12px;
+    letter-spacing: 2px;
+    animation: hintGlow 2s infinite;
+}
+
+@keyframes hintGlow {
+    50% { box-shadow: 0 0 25px #ff58a833; }
+}
+
+/* MAIN PAGE */
+
+main {
+    position: relative;
+    z-index: 1;
+}
+
+section {
+    padding: 85px 20px;
+}
+
+.hero {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    padding-top: 90px;
+}
+
+.eyebrow {
+    color: var(--gold);
+    text-transform: uppercase;
+    letter-spacing: 5px;
+    font-size: 11px;
+    margin-bottom: 25px;
+}
+
+.hero h1 {
+    font-family: Georgia, "Times New Roman", serif;
+    font-weight: 400;
+    line-height: 1.18;
+    font-size: clamp(42px, 9vw, 88px);
+    max-width: 950px;
+    text-shadow: 0 0 45px #ff63b82c;
+}
+
+.hero h1 span {
+    display: block;
+    font-style: italic;
+    background: linear-gradient(100deg, #ff9fcd, #fff0c8, #d4a9ff, #ff9fcd);
+    background-size: 250% auto;
+    color: transparent;
+    background-clip: text;
+    -webkit-background-clip: text;
+    animation: shimmer 6s linear infinite;
+}
+
+@keyframes shimmer {
+    to { background-position: 250% center; }
+}
+
+.hero-subtitle {
+    color: #d6bfd2;
+    font-size: 15px;
+    line-height: 1.9;
+    margin-top: 25px;
+    max-width: 480px;
+}
+
+.scroll-link {
+    margin-top: 45px;
+    color: #ffc0de;
+    text-decoration: none;
+    font-size: 12px;
+    letter-spacing: 2px;
+}
+
+.scroll-link span {
+    display: block;
+    font-size: 25px;
+    margin-top: 12px;
+    animation: bounce 1.5s infinite;
+}
+
+@keyframes bounce {
+    50% { transform: translateY(7px); }
+}
+
+/* COMMON SECTION HEADINGS */
+
+.section-heading {
+    text-align: center;
+    margin-bottom: 42px;
+}
+
+.section-heading .eyebrow {
+    margin-bottom: 13px;
+}
+
+.section-heading h2 {
+    font-family: Georgia, serif;
+    font-size: clamp(33px, 6vw, 52px);
+    font-weight: 400;
+}
+
+.section-heading h2 span {
+    color: #ff8bc3;
+    font-style: italic;
+}
+
+.section-heading p {
+    color: #bfa9bc;
+    margin-top: 14px;
+    line-height: 1.8;
+    font-size: 14px;
+}
+
+/* AUTOMATIC PHOTO SHOW */
+
+.story-section {
+    padding-top: 35px;
+}
+
+.slideshow {
+    width: min(100%, 420px);
+    margin: auto;
+    position: relative;
+}
+
+.photo-stage {
+    position: relative;
+    width: 100%;
+    aspect-ratio: 4 / 5;
+    border: 1px solid #ffc4e355;
+    border-radius: 23px;
+    overflow: hidden;
+    background: linear-gradient(145deg, #542141, #21152e);
+    box-shadow: 0 25px 85px #0008, 0 0 45px #f75ba51a;
+}
+
+.slide {
+    position: absolute;
+    inset: 0;
+    opacity: 0;
+    transform: scale(1.06);
+    transition: opacity 1s ease, transform 4s ease;
+    pointer-events: none;
+}
+
+.slide.active {
+    opacity: 1;
+    transform: scale(1);
+}
+
+.slide img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+    cursor: zoom-in;
+}
+
+.photo-fallback {
+    position: absolute;
+    inset: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 14px;
+    padding: 25px;
+    text-align: center;
+    color: #ffd5e8;
+    background:
+        radial-gradient(circle at 30% 30%, #a7487c88, transparent 45%),
+        linear-gradient(145deg, #492044, #21152e);
+}
+
+.photo-fallback span {
+    font-size: 65px;
+}
+
+.photo-fallback small {
+    color: #f3cce0;
+    line-height: 1.7;
+}
+
+.photo-caption {
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    padding: 65px 20px 24px;
+    background: linear-gradient(transparent, #100713e8);
+    text-align: center;
+    font-family: Georgia, serif;
+    font-size: 23px;
+    color: #fff0f7;
+    pointer-events: none;
+}
+
+.slide-counter {
+    text-align: center;
+    color: #d9b8d1;
+    margin-top: 20px;
+    font-size: 12px;
+    letter-spacing: 3px;
+}
+
+.progress-track {
+    width: min(100%, 220px);
+    height: 2px;
+    background: #ffffff20;
+    margin: 13px auto;
+    overflow: hidden;
+}
+
+.progress-bar {
+    height: 100%;
+    width: 0;
+    background: linear-gradient(90deg, var(--pink), var(--gold));
+}
+
+.progress-bar.playing {
+    animation: progress 3.5s linear forwards;
+}
+
+@keyframes progress {
+    to { width: 100%; }
+}
+
+.stop-message {
+    text-align: center;
+    margin-top: 25px;
+    color: #ffbedc;
+    font-family: Georgia, serif;
+    font-size: 19px;
+    opacity: 0;
+    transition: opacity .8s;
+}
+
+.stop-message.show {
+    opacity: 1;
+}
+
+/* BIRTHDAY LETTER */
+
+.wish-section {
+    padding-top: 55px;
+}
+
+.wish-card {
+    width: min(100%, 760px);
+    margin: auto;
+    padding: clamp(25px, 6vw, 55px);
+    border: 1px solid #ffc4e333;
+    border-radius: 28px;
+    background: linear-gradient(145deg, #ffffff0d, #ffffff04);
+    box-shadow: 0 20px 70px #0004;
+    backdrop-filter: blur(12px);
+    text-align: center;
+}
+
+.wish-card .big-heart {
+    font-size: 37px;
+    margin-bottom: 20px;
+    filter: drop-shadow(0 0 12px #ff61a7);
+}
+
+.wish-card h2 {
+    font-family: Georgia, serif;
+    font-size: clamp(32px, 6vw, 47px);
+    font-weight: 400;
+    color: #ffb8d9;
+    margin-bottom: 28px;
+}
+
+.wish-card p {
+    color: #e3d1e0;
+    font-size: 15px;
+    line-height: 2;
+    margin: 15px 0;
+}
+
+.wish-card .signature {
+    font-family: Georgia, serif;
+    font-style: italic;
+    font-size: 25px;
+    color: var(--gold);
+    margin-top: 30px;
+}
+
+/* BEST MEMORIES */
+
+.gallery-section {
+    padding-top: 55px;
+}
+
+.gallery {
+    width: min(100%, 1000px);
+    margin: auto;
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 18px;
+}
+
+.memory {
+    position: relative;
+    aspect-ratio: 4 / 5;
+    overflow: hidden;
+    border-radius: 16px;
+    border: 1px solid #ffffff20;
+    background: linear-gradient(145deg, #542141, #21152e);
+    cursor: pointer;
+    box-shadow: 0 10px 30px #0003;
+    transition: transform .35s, border-color .35s, box-shadow .35s;
+}
+
+.memory:hover {
+    transform: translateY(-7px);
+    border-color: #ff9bc9a0;
+    box-shadow: 0 15px 40px #ff62a51e;
+}
+
+.memory img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+    transition: transform .65s;
+}
+
+.memory:hover img {
+    transform: scale(1.08);
+}
+
+.memory .photo-fallback span {
+    font-size: 40px;
+}
+
+.memory .photo-fallback small {
+    font-size: 11px;
+}
+
+.memory-label {
+    position: absolute;
+    inset: auto 0 0;
+    padding: 45px 10px 15px;
+    text-align: center;
+    background: linear-gradient(transparent, #120813e8);
+    font-family: Georgia, serif;
+    font-size: clamp(14px, 2.5vw, 19px);
+    color: #fff0f7;
+    pointer-events: none;
+}
+
+.gallery-note {
+    color: #bfa9bc;
+    text-align: center;
+    margin-top: 25px;
+    line-height: 1.8;
+    font-size: 13px;
+}
+
+/* FINAL */
+
+.final-section {
+    padding: 90px 20px 40px;
+    text-align: center;
+}
+
+.final-heart {
+    font-size: 42px;
+    animation: heartbeat 1.5s infinite;
+}
+
+.final-section h2 {
+    font-family: Georgia, serif;
+    font-weight: 400;
+    font-size: clamp(32px, 7vw, 55px);
+    color: #ffc1df;
+    margin: 20px 0;
+}
+
+.final-section p {
+    color: #cdb7ca;
+    line-height: 1.9;
+}
+
+.footer {
+    text-align: center;
+    padding: 30px 15px 35px;
+    color: #9c8298;
+    font-size: 11px;
+    letter-spacing: 1px;
+}
+
+/* PHOTO LIGHTBOX */
+
+.lightbox {
+    position: fixed;
+    inset: 0;
+    z-index: 50;
+    display: none;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+    background: #09040bf2;
+    backdrop-filter: blur(12px);
+}
+
+.lightbox.open {
+    display: flex;
+    animation: fadeIn .25s ease;
+}
+
+.lightbox img {
+    max-width: min(92vw, 850px);
+    max-height: 82vh;
+    object-fit: contain;
+    border-radius: 12px;
+    box-shadow: 0 0 60px #ff58a52b;
+}
+
+.close-lightbox {
+    position: absolute;
+    top: 20px;
+    right: 25px;
+    border: 1px solid #ffffff40;
+    background: #ffffff15;
+    color: white;
+    border-radius: 50%;
+    width: 43px;
+    height: 43px;
+    font-size: 25px;
+    cursor: pointer;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+@media (max-width: 600px) {
+    section { padding: 65px 17px; }
+    .hero { min-height: 88vh; }
+    .gallery { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 12px; }
+    .photo-stage { border-radius: 17px; }
+    .wish-card { border-radius: 20px; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    *, *::before, *::after {
+        animation-duration: .01ms !important;
+        animation-iteration-count: 1 !important;
+        scroll-behavior: auto !important;
+        transition-duration: .01ms !important;
+    }
+}
+</style>
+</head>
+
+<body>
+
+<div id="hearts" aria-hidden="true"></div>
+
+<!-- OPENING SCREEN -->
+<div class="intro" id="intro">
+    <div class="intro-label">A little surprise for someone special</div>
+
+    <button class="heart-button" id="openHeart"
+            aria-label="Open your birthday surprise">
+        💗
+    </button>
+
+    <h1>For My Sissy</h1>
+    <p>A little world made with love, just for you.</p>
+
+    <div class="tap-hint">♡ TAP THE HEART TO OPEN ♡</div>
+</div>
+
+<main>
+
+    <!-- HERO -->
+    <section class="hero">
+        <div class="eyebrow">✦ Today is all about you ✦</div>
+
+        <h1>
+            Happy Birthday
+            <span>Dearest Sissy 💗</span>
+        </h1>
+
+        <p class="hero-subtitle">
+            To my forever friend, my biggest supporter,
+            and one of the most precious people in my world.
+            Today, this little universe shines just for you. ✨
+        </p>
+
+        <a class="scroll-link" href="#story">
+            YOUR LITTLE MEMORY JOURNEY
+            <span>↓</span>
+        </a>
+    </section>
+
+    <!-- PHOTO SLIDESHOW -->
+    <section class="story-section" id="story">
+        <div class="section-heading">
+            <div class="eyebrow">✧ A journey through time ✧</div>
+            <h2>Little Moments, <span>Big Love</span></h2>
+            <p>Every picture holds a memory. Every memory holds a piece of my heart.</p>
+        </div>
+
+        <div class="slideshow">
+            <div class="photo-stage" id="photoStage">
+
+                <div class="slide active">
+                    <img src="photos/photo1.jpg" alt="Birthday memory one">
+                    <div class="photo-caption">My favourite person 💗</div>
+                </div>
+
+                <div class="slide">
+                    <img src="photos/photo2.jpg" alt="Birthday memory two">
+                    <div class="photo-caption">Our little world ✨</div>
+                </div>
+
+                <div class="slide">
+                    <img src="photos/photo3.jpg" alt="Birthday memory three">
+                    <div class="photo-caption">Smiles that stay forever 🌸</div>
+                </div>
+
+                <div class="slide">
+                    <img src="photos/photo4.jpg" alt="Birthday memory four">
+                    <div class="photo-caption">Memories worth keeping 💕</div>
+                </div>
+
+                <div class="slide">
+                    <img src="photos/photo5.jpg" alt="Birthday memory five">
+                    <div class="photo-caption">Together is my favourite place 🫶</div>
+                </div>
+
+                <div class="slide">
+                    <img src="photos/photo6.jpg" alt="Birthday memory six">
+                    <div class="photo-caption">Forever my Sissy 💖</div>
+                </div>
+
+            </div>
+
+            <div class="slide-counter" id="slideCounter">01 / 06</div>
+            <div class="progress-track">
+                <div class="progress-bar playing" id="progressBar"></div>
+            </div>
+            <div class="stop-message" id="stopMessage">
+                And the best part? We still have so many memories to make. ♡
+            </div>
+        </div>
+    </section>
+
+    <!-- BIRTHDAY WISH -->
+    <section class="wish-section" id="wish">
+        <div class="section-heading">
+            <div class="eyebrow">✧ A letter from my heart ✧</div>
+            <h2>For You, <span>My Sissy</span></h2>
+        </div>
+
+        <div class="wish-card">
+            <div class="big-heart">💗</div>
+            <h2>Happy Birthday, Sissy!</h2>
+
+            <p>
+                No words could ever fully explain how special you are to me.
+                You are more than a sister — you are a beautiful part of my
+                life, my happiness, and my favourite collection of memories.
+            </p>
+
+            <p>
+                On your special day, I wish you endless happiness,
+                beautiful surprises, peaceful days, big dreams,
+                and a thousand reasons to smile.
+            </p>
+
+            <p>
+                May every new chapter of your life bring you closer to
+                everything your heart wishes for. Never forget how loved
+                you are, today and every single day.
+            </p>
+
+            <p>
+                No matter how much life changes, you'll always have a
+                special place in my heart. More laughs, more adventures,
+                more crazy moments, and more memories together!
+            </p>
+
+            <p class="signature">
+                Forever your sibling, forever your friend. 💕
+            </p>
+        </div>
+    </section>
+
+    <!-- BEST MEMORIES -->
+    <section class="gallery-section" id="memories">
+        <div class="section-heading">
+            <div class="eyebrow">✧ Saved in my heart ✧</div>
+            <h2>Our <span>Best Memories</span> 📸</h2>
+            <p>A few favourite moments from our story. Tap any photo to see it bigger.</p>
+        </div>
+
+        <div class="gallery">
+
+            <div class="memory">
+                <img src="photos/photo1.jpg" alt="Our favourite memory one">
+                <div class="memory-label">My favourite 💗</div>
+            </div>
+
+            <div class="memory">
+                <img src="photos/photo2.jpg" alt="Our favourite memory two">
+                <div class="memory-label">Pure happiness ✨</div>
+            </div>
+
+            <div class="memory">
+                <img src="photos/photo3.jpg" alt="Our favourite memory three">
+                <div class="memory-label">Little moments 🌸</div>
+            </div>
+
+            <div class="memory">
+                <img src="photos/photo4.jpg" alt="Our favourite memory four">
+                <div class="memory-label">Crazy us 🫶</div>
+            </div>
+
+            <div class="memory">
+                <img src="photos/photo5.jpg" alt="Our favourite memory five">
+                <div class="memory-label">Forever together 💕</div>
+            </div>
+
+            <div class="memory">
+                <img src="photos/photo6.jpg" alt="Our favourite memory six">
+                <div class="memory-label">Always my Sissy 💖</div>
+            </div>
+
+        </div>
+
+        <p class="gallery-note">
+            Six little frames, countless beautiful feelings. ♡
+        </p>
+    </section>
+
+    <!-- FINAL MESSAGE -->
+    <section class="final-section">
+        <div class="final-heart">💗</div>
+        <h2>One Sister. A Million Memories.</h2>
+        <p>
+            If I could make one wish today, it would be for you to always
+            find happiness, love, and reasons to smile.
+        </p>
+        <p style="margin-top: 15px; color: #ffb6d8;">
+            Happy Birthday, Sissy. You mean the world to me. ✨
+        </p>
+    </section>
+
+    <footer class="footer">
+        MADE WITH ALL MY LOVE ♡ JUST FOR MY SISSY
+    </footer>
+
+</main>
+
+<!-- FULL SIZE PHOTO -->
+<div class="lightbox" id="lightbox" role="dialog"
+     aria-modal="true" aria-label="Full size memory photo">
+    <button class="close-lightbox" id="closeLightbox"
+            aria-label="Close photo">×</button>
+    <img id="lightboxImage" src="" alt="Full size memory">
+</div>
+
+<script>
+/* OPEN THE BIRTHDAY SURPRISE */
+
+const intro = document.getElementById("intro");
+const openHeart = document.getElementById("openHeart");
+
+openHeart.addEventListener("click", () => {
+    intro.classList.add("hide");
+    document.body.style.overflowX = "hidden";
+
+    // Start the slideshow after the surprise opens.
+    startSlideshow();
+
+    // Create a little burst of hearts.
+    for (let i = 0; i < 18; i++) {
+        setTimeout(createHeart, i * 90);
+    }
+});
+
+/* FLOATING HEARTS */
+
+const heartsContainer = document.getElementById("hearts");
+const heartSymbols = ["💗", "💕", "💖", "♡", "✨"];
+
+function createHeart() {
+    const heart = document.createElement("span");
+    heart.className = "heart-particle";
+    heart.textContent =
+        heartSymbols[Math.floor(Math.random() * heartSymbols.length)];
+
+    heart.style.left = Math.random() * 100 + "%";
+    heart.style.fontSize = (12 + Math.random() * 19) + "px";
+
+    const duration = 7 + Math.random() * 7;
+    heart.style.animationDuration = duration + "s";
+
+    heartsContainer.appendChild(heart);
+
+    setTimeout(() => heart.remove(), duration * 1000);
+}
+
+// A gentle amount of background animation.
+setInterval(createHeart, 650);
+
+/* AUTOMATIC SLIDESHOW — STOPS AFTER THE LAST PHOTO */
+
+const slides = Array.from(document.querySelectorAll(".slide"));
+const slideCounter = document.getElementById("slideCounter");
+const progressBar = document.getElementById("progressBar");
+const stopMessage = document.getElementById("stopMessage");
+
+let currentSlide = 0;
+let slideshowStarted = false;
+const slideDuration = 3500;
+
+function startSlideshow() {
+    if (slideshowStarted) return;
+    slideshowStarted = true;
+
+    // The first image is already visible.
+    progressBar.classList.remove("playing");
+    void progressBar.offsetWidth;
+    progressBar.classList.add("playing");
+
+    setTimeout(showNextSlide, slideDuration);
+}
+
+function showNextSlide() {
+    if (currentSlide >= slides.length - 1) {
+        progressBar.classList.remove("playing");
+        stopMessage.classList.add("show");
+        return;
+    }
+
+    slides[currentSlide].classList.remove("active");
+    currentSlide++;
+
+    slides[currentSlide].classList.add("active");
+
+    slideCounter.textContent =
+        String(currentSlide + 1).padStart(2, "0") +
+        " / " +
+        String(slides.length).padStart(2, "0");
+
+    progressBar.classList.remove("playing");
+    void progressBar.offsetWidth;
+    progressBar.classList.add("playing");
+
+    setTimeout(showNextSlide, slideDuration);
+}
+
+/* FALLBACK FOR PHOTOS THAT HAVE NOT BEEN ADDED YET */
+
+document.querySelectorAll(".slide img, .memory img").forEach(img => {
+    img.addEventListener("error", () => {
+        if (img.dataset.failed) return;
+        img.dataset.failed = "true";
+
+        const fallback = document.createElement("div");
+        fallback.className = "photo-fallback";
+        fallback.innerHTML =
+            "<span>📸💗</span>" +
+            "<strong>Your special memory</strong>" +
+            "<small>Add your photo in the photos folder<br>" +
+            "using this image's filename.</small>";
+
+        img.replaceWith(fallback);
+    }, { once: true });
+});
+
+/* CLICKABLE BEST MEMORIES */
+
+const lightbox = document.getElementById("lightbox");
+const lightboxImage = document.getElementById("lightboxImage");
+const closeLightbox = document.getElementById("closeLightbox");
+
+document.querySelectorAll(".memory, .slide").forEach(frame => {
+    frame.addEventListener("click", () => {
+        const img = frame.querySelector("img");
+
+        // Don't open the placeholder for a missing photo.
+        if (!img || !img.complete || img.naturalWidth === 0) return;
+
+        lightboxImage.src = img.src;
+        lightboxImage.alt = img.alt;
+        lightbox.classList.add("open");
+        document.body.style.overflow = "hidden";
+    });
+});
+
+function closePhoto() {
+    lightbox.classList.remove("open");
+    lightboxImage.src = "";
+    document.body.style.overflow = "";
+}
+
+closeLightbox.addEventListener("click", closePhoto);
+
+lightbox.addEventListener("click", event => {
+    if (event.target === lightbox) closePhoto();
+});
+
+document.addEventListener("keydown", event => {
+    if (event.key === "Escape") closePhoto();
+});
+</script>
+
+</body>
+</html>
